@@ -1,0 +1,64 @@
+<app>
+  <section>
+    <header>
+      <h1>My Store</h1>
+      <nav>
+        <ul>
+          <li><a href="#products">All Products</a></li>
+        </ul>
+      </nav>
+    </header>
+    <article>
+      <div id="mainview"></div>
+    </article>
+    <footer>
+      <nav>
+        <a href='#' onclick={resetProducts}>Reset Products</a>
+        <a href='#add'>New Product</a>
+      </nav>
+    </footer>
+  </section>
+
+  <script type="es6">
+
+    this._currentView = null;
+
+    this.resetProducts = () => {
+      riot.control.trigger(riot.ActionTypes.VIEW_RESET_DATA);
+    };
+
+    loadView = (viewName, id) => {
+      if (this._currentView) {
+        this._currentView.unmount(true);
+      };
+      this._currentView = riot.mountTo('div#mainview', viewName, {data: id})[0];
+    };
+
+    studyRoute = (view, id) => {
+      switch(view) {
+        case 'detail':
+          loadView('product-detail-view', id);
+          break;
+        case 'products':
+          loadView('product-list-view');
+          break;
+        case 'add':
+          loadView('product-new-view');
+          break;
+        case 'data':
+          loadView('product-data-view',id);
+          break;
+        default:
+          loadView('product-list-view');
+      }
+    };
+
+    riot.route(studyRoute);
+
+    this.on('mount', () => {
+      riot.route.exec(studyRoute);
+    });
+
+  </script>
+
+</app>
