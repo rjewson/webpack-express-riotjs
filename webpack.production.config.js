@@ -5,20 +5,14 @@ var nodeModulesPath = path.resolve(__dirname, 'node_modules');
 var buildPath = path.resolve(__dirname, 'public', 'build');
 
 var config = {
-  context: __dirname,
-  devtool: 'eval-source-map',
+  devtool: 'source-map',
   entry: {
-    app : [
-    'webpack-dev-server/client?http://localhost:3000', 
-    'webpack/hot/dev-server', 
-    path.resolve(appPath, 'main.js')
-  ],
-  vendor : path.resolve(appPath, 'vendor.js')
+    app : path.resolve(__dirname, 'app', 'main.js'),
+    vendor : path.resolve(__dirname, 'app', 'vendor.js')
   },
   output: {
     path: buildPath,
-    filename: 'bundle.js',
-    publicPath: '/build/'
+    filename: 'bundle.js'
   },
   module: {
     loaders: [
@@ -33,13 +27,14 @@ var config = {
       riot: 'riot'
     }),
     new Webpack.DefinePlugin({
-      __DEV__: true
+      __DEV__: false
     }),
     new Webpack.optimize.CommonsChunkPlugin("vendor","vendor.bundle.js")
   ],
   resolve: {
     root:appPath
   }
+
 };
 
 module.exports = config;

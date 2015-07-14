@@ -10,6 +10,7 @@ var app = express();
 var isProduction = process.env.NODE_ENV === 'production';
 var port = isProduction ? process.env.PORT : 3000;
 var publicPath = path.resolve(__dirname, 'public');
+
 var redis = require("redis");
 
 app.use(express.static(publicPath));
@@ -50,9 +51,8 @@ if (!isProduction) {
     });
   });
 
-
   proxy.on('error', function(e) {
-    // Just catch it
+    console.log(e);
   });
 
   // We need to use basic HTTP service to proxy
@@ -69,7 +69,6 @@ if (!isProduction) {
 
 } else {
 
-  // And run the server
   app.listen(port, function () {
     console.log('Server running on port ' + port);
   });

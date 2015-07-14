@@ -1,31 +1,24 @@
 <app>
-  <section>
-    <header>
-      <h1>My Store</h1>
-      <nav>
-        <ul>
-          <li><a href="#products">All Products</a></li>
-        </ul>
-      </nav>
-    </header>
-    <article>
-      <div id="mainview"></div>
-    </article>
-    <footer>
-      <nav>
-        <a href='#' onclick={resetProducts}>Reset Products</a>
-        <a href='#add'>New Product</a>
-      </nav>
-    </footer>
-  </section>
+
+  <header>
+    <h1>Product Store</h1>
+    <nav>
+      <ul>
+        <li><a href="#products">All Products</a></li>
+        <li><a href='#add'>New Product</a></li>
+        <li><a href='#' onclick={reset}>Reset</a></li>
+      </ul>
+    </nav>
+  </header>
+    
+  <div id="mainview"></div>
+
+  <footer>
+  </footer>
 
   <script type="es6">
 
     this._currentView = null;
-
-    this.resetProducts = () => {
-      riot.control.trigger(riot.ActionTypes.VIEW_RESET_DATA);
-    };
 
     loadView = (viewName, id) => {
       if (this._currentView) {
@@ -43,10 +36,7 @@
           loadView('product-list-view');
           break;
         case 'add':
-          loadView('product-new-view');
-          break;
-        case 'data':
-          loadView('product-data-view',id);
+          loadView('productAddView');
           break;
         default:
           loadView('product-list-view');
@@ -58,6 +48,10 @@
     this.on('mount', () => {
       riot.route.exec(studyRoute);
     });
+
+    this.reset = () => {
+      console.log("reset");
+    };
 
   </script>
 

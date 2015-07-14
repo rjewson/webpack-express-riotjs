@@ -1,15 +1,9 @@
 import keyMirror from 'keymirror';
 
-riot.ActionTypes = keyMirror({
+let events = keyMirror({
 
-	STORE_PRODUCTS_CHANGED:null,
-
-	STORE_XE_DATA_CHANGED:null,
-	STORE_XE_DATA_FAILED:null,
-
-	VIEW_RESET_DATA:null,
-	VIEW_ADD_DATA:null,
-	VIEW_STAR_PRODUCT:null,
-	VIEW_LOAD_PRODUCTS:null
+	PRODUCT_ADD_ITEM:null
 
 });
+
+export default events;

@@ -1,10 +1,7 @@
-import 'riot'
+import 'actions/AppActions'
+import 'components/allComponents'
 
-import './constants/eventTypes.js'
-import './app.html'
-
+//Main entry point
 riot.mount('app');
 
-console.log('Application is loaded!');
-
-console.log(riot);
+console.info('Application is loaded.');
