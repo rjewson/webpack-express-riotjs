@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server",
+    "devproxy": "node support/devProxy",
+    "start": "nodemon --ignore 'app/*'",
     "redis": "redis-server /usr/local/etc/redis.conf",
     "prodbuild": "webpack -p --config webpack.production.config.js"
   },

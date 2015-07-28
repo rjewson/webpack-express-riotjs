@@ -4,7 +4,7 @@ var path = require('path');
 var app = express();
 
 var isProduction = process.env.NODE_ENV === 'production';
-var port = isProduction ? process.env.PORT : 3000;
+var port = isProduction ? process.env.PORT : 3002;
 var publicPath = path.resolve(__dirname, 'public');
 
 var redis = require("redis");
@@ -34,13 +34,14 @@ function getKeyDetails(req, res, next) {
 
 var server = app;
 
-if (!isProduction) {
-  //If in dev, run it through a proxy that also handles webpack
-  var webpackProxy = require('./server/support/webpackProxy.js');
-  server = webpackProxy(app);
-} 
+// if (!isProduction) {
+//   //If in dev, run it through a proxy that also handles webpack
+//   var webpackProxy = require('./server/support/webpackProxy.js');
+//   server = webpackProxy(app);
+// } 
 
 server.listen(port, function () {
   console.log('Server running on port ' + port);
 }); 
 
+console.log('done');
