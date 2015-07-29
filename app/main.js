@@ -1,4 +1,5 @@
 import 'actions/AppActions'
+import 'stores/AppStore'
 import 'components/allComponents'
 
 //Main entry point

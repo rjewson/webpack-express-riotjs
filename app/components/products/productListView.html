@@ -1,0 +1,32 @@
+<productListView>
+
+  <ul>
+    <li each={products}>
+      <span>{ID}</span>
+      <span>{title}</span>
+      <button onclick={deleteItem}>Delete</button>
+    </li>
+  </ul>
+
+  <script type="es6">
+    
+    import actions from 'actions/AppActions';
+    import appStore from 'stores/AppStore';
+
+    this.products = appStore.getState().products;
+
+    let updateData = () => {
+      this.products = appStore.getState().products;
+      this.update();
+    };
+
+    appStore.listen(updateData);
+
+    this.deleteItem = (event) => {
+      //The event parameter contains 'item' which holds the original data used to create the node
+      actions.deleteProduct(event.item.ID);
+    }
+
+  </script>
+  
+</productListView>

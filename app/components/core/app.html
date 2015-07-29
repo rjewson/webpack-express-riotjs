@@ -18,6 +18,8 @@
 
   <script type="es6">
 
+    import actions from 'actions/AppActions';
+
     this._currentView = null;
 
     loadView = (viewName, id) => {
@@ -33,13 +35,13 @@
           loadView('product-detail-view', id);
           break;
         case 'products':
-          loadView('product-list-view');
+          loadView('productListView');
           break;
         case 'add':
           loadView('productAddView');
           break;
         default:
-          loadView('product-list-view');
+          loadView('productListView');
       }
     };
 
@@ -50,7 +52,7 @@
     });
 
     this.reset = () => {
-      console.log("reset");
+      actions.clearAllProducts();
     };
 
   </script>

@@ -20,11 +20,11 @@
 
   <script type="es6">
     
-    import AppActions from 'actions/AppActions';
+    import actions from 'actions/AppActions';
 
     this.submit = () => {
-      AppActions.AddProduct(this.title.value,this.description.value);
-      riot.route('#');
+      actions.addProduct({title:this.title.value,description:this.description.value});
+      riot.route('/');
     }
 
   </script>

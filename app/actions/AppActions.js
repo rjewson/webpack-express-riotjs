@@ -1,14 +1,19 @@
-var constants = require('constants/EventTypes');
+import alt from 'altjs';
 
-var AppActions = {
-	AddProduct : (name,description) => {
-		riot.control.trigger(
-			riot.EventTypes.ADD_PRODUCT_ITEM,
-			{
-				name,
-				description
-			});
+class AppActions {
+
+	clearAllProducts() {
+		this.dispatch();
 	}
-};
 
-export default AppActions;
+  	addProduct(product) {
+    	this.dispatch(product);
+  	}
+
+  	deleteProduct(product) {
+    	this.dispatch(product);
+  	}
+
+}
+ 
+module.exports = alt.createActions(AppActions);
