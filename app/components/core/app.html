@@ -20,35 +20,10 @@
 
     import actions from 'actions/AppActions';
 
-    this._currentView = null;
-
-    loadView = (viewName, id) => {
-      if (this._currentView) {
-        this._currentView.unmount(true);
-      };
-      this._currentView = riot.mountTo('div#mainview', viewName, {data: id})[0];
-    };
-
-    studyRoute = (view, id) => {
-      switch(view) {
-        case 'detail':
-          loadView('product-detail-view', id);
-          break;
-        case 'products':
-          loadView('productListView');
-          break;
-        case 'add':
-          loadView('productAddView');
-          break;
-        default:
-          loadView('productListView');
-      }
-    };
-
-    riot.route(studyRoute);
+    import routes from 'routes';
 
     this.on('mount', () => {
-      riot.route.exec(studyRoute);
+      routes.router.init();
     });
 
     this.reset = () => {

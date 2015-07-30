@@ -31,17 +31,6 @@ function getKeyDetails(req, res, next) {
   });
 }
 
-
-var server = app;
-
-// if (!isProduction) {
-//   //If in dev, run it through a proxy that also handles webpack
-//   var webpackProxy = require('./server/support/webpackProxy.js');
-//   server = webpackProxy(app);
-// } 
-
-server.listen(port, function () {
-  console.log('Server running on port ' + port);
+app.listen(port, function () {
+  console.log('Server listening on port:' + port);
 }); 
-
-console.log('done');

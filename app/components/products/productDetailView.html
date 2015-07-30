@@ -1,0 +1,14 @@
+<productDetailView>
+
+  <h2>{product.title}</h2>
+  <p>{product.description}</p>
+
+  <script type="es6">
+    
+    import appStore from 'stores/AppStore';
+
+    this.product = appStore.getProductById(opts.data);
+    
+  </script>
+  
+</productDetailView>

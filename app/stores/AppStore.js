@@ -4,8 +4,8 @@ import appActions from 'actions/AppActions';
 class AppStore {
 
 	constructor() {
-		this.products = [];
-		this.nextID = 0;
+		this.products = [{ID:0,title:"Test",description:"blah"}];
+		this.nextID = 1;
 
 		this.bindListeners({
 			handleClearAllProducts:appActions.CLEAR_ALL_PRODUCTS,
@@ -24,15 +24,15 @@ class AppStore {
 		this.products.push(data);
 	}
 
-	handleDeleteProduct(data) {
-		var item = this.getProductById(data);
+	handleDeleteProduct(id) {
+		var item = this.products.filter(p => p.ID == id)[0];
 		if (item) {
 			this.products.splice(this.products.indexOf(item),1);
 		}	
 	}
 
-	getProductById(id) {
-		return this.products.filter(p => p.ID == id)[0];
+	static getProductById (id) {
+		return this.getState().products.filter(p => p.ID == id)[0];
 	}
 
 }

@@ -3,7 +3,7 @@
   <ul>
     <li each={products}>
       <span>{ID}</span>
-      <span>{title}</span>
+      <span><a href="#/detail/{ID}">{title}</a></span>
       <button onclick={deleteItem}>Delete</button>
     </li>
   </ul>
@@ -24,6 +24,7 @@
 
     this.deleteItem = (event) => {
       //The event parameter contains 'item' which holds the original data used to create the node
+      console.log(event.item.ID);
       actions.deleteProduct(event.item.ID);
     }
 
